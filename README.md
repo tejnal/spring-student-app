@@ -1,7 +1,7 @@
-##Project 
+## Project 
  REST API with data persistence 
 
-# Tech stack user 
+# Tech stack  
 Spring boot , Mockito[ Unit testing], Junit, Spring Date, Spring documentation, Spring Actuator
 Spring web, Spring data jpa, embedded tomcat 
 
