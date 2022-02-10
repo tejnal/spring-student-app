@@ -14,21 +14,18 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class Student {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "ID")
+  private Integer id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private Integer id;
+  @NotBlank(message = "Please add student name.")
+  @Column(name = "NAME")
+  private String name;
 
-    @NotBlank(message = "Please add student name.")
-    @Column(name = "NAME")
-    private String name;
+  @Column(name = "ROLL_NUMBER")
+  private Integer rollNo;
 
-    @Column(name = "ROLL_NUMBER")
-    private Integer rollNo;
-
-    @Column(name = "ADDRESS")
-    private String address;
-
-
+  @Column(name = "ADDRESS")
+  private String address;
 }

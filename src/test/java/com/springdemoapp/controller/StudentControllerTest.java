@@ -16,31 +16,32 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @WebMvcTest(StudentController.class)
 public class StudentControllerTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+  @Autowired private MockMvc mockMvc;
 
-    @MockBean
-    private StudentService studentService;
+  @MockBean private StudentService studentService;
 
-    private Student student;
+  private Student student;
 
-    @BeforeEach
-    void setup() {
-        student = new Student(1, "abc", 101, "hyd");
-    }
+  @BeforeEach
+  void setup() {
+    student = new Student(1, "abc", 101, "hyd");
+  }
 
-    @Test
-    void testSaveStudent() throws Exception {
-        Student studentEntity = new Student(1, "abc", 101, "hyd");
-        Mockito.when(studentService.addStudent(studentEntity)).thenReturn(student);
-        mockMvc.perform(MockMvcRequestBuilders.post("/student/")
+  @Test
+  void testSaveStudent() throws Exception {
+    Student studentEntity = new Student(1, "abc", 101, "hyd");
+    Mockito.when(studentService.addStudent(studentEntity)).thenReturn(student);
+    mockMvc
+        .perform(
+            MockMvcRequestBuilders.post("/student/")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\r\n" +
-                        "  \"id\": 1,\r\n" +
-                        "  \"name\": \"abc\",\r\n" +
-                        "  \"rollNo\": 101,\r\n" +
-                        "  \"address\": \"hyd\"\r\n" +
-                        "}"))
-                .andExpect(MockMvcResultMatchers.status().isOk());
-    }
+                .content(
+                    "{\r\n"
+                        + "  \"id\": 1,\r\n"
+                        + "  \"name\": \"abc\",\r\n"
+                        + "  \"rollNo\": 101,\r\n"
+                        + "  \"address\": \"hyd\"\r\n"
+                        + "}"))
+        .andExpect(MockMvcResultMatchers.status().isOk());
+  }
 }
